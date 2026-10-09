@@ -1,0 +1,19 @@
+[workspace]
+channels = ["conda-forge"]
+name = "poster-usrse-2026"
+platforms = ["linux-64"]
+version = "0.1.0"
+
+[tasks.qr-code]
+description = "Generate QR code for poster"
+cmd = "python ./qr_code.py"
+
+[tasks.poster]
+cmd = """
+latexmk -pdflatex -logfilewarnings -halt-on-error poster
+"""
+
+[dependencies]
+texlive-core = ">=20260301,<20260302"
+qrcode = ">=8.2,<9"
+rsync = ">=3.4.4,<4"
