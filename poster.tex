@@ -1,0 +1,188 @@
+% CHTC Researcher Forum 2026: Posters are 4 feet (48 inches) wide and 3 feet (36 inches) tall.
+% Hack: Currently set in betterposter.cls
+\documentclass[a0paper,fleqn]{betterposter}
+\usepackage{bm}
+\graphicspath{{figures/}}
+\usepackage[hidelinks]{hyperref}
+
+% Uncomment the following commands to customise the format
+
+%% Setting the width of columns
+% Left column
+\setlength{\leftbarwidth}{0.2\paperwidth}
+% Right column
+\setlength{\rightbarwidth}{0.2\paperwidth}
+
+%% Setting the column margins
+% Horizontal margin
+%\setlength{\columnmarginvertical}{0.05\paperheight}
+% Vertical margin
+%\setlength{\columnmarginhorizontal}{0.05\paperheight}
+% Horizontal margin for the main column
+%\setlength{\maincolumnmarginvertical}{0.15\paperheight}
+% Vertical margin for the main column
+%\setlength{\maincolumnmarginhorizontal}{0.15\paperheight}
+
+% Text font
+\renewcommand{\fontsizestandard}{\fontsize{32}{46} \selectfont}
+% Main column font
+% \renewcommand{\fontsizemain}{\fontsize{148.00}{280.00} \selectfont}
+% Set baseline skip to 1.4 times font size
+% \renewcommand{\fontsizemain}{\fontsize{135}{162} \selectfont}
+% \renewcommand{\fontsizemain}{\fontsize{130}{156} \selectfont}
+\renewcommand{\fontsizemain}{\fontsize{128}{180} \selectfont}
+% \renewcommand{\fontsizemain}{\fontsize{130}{182} \selectfont}
+% Title font
+% \renewcommand{\fontsizetitle}{\fontsize{101.50}{152.00} \selectfont}
+\renewcommand{\fontsizetitle}{\fontsize{64}{90} \selectfont}
+% Author font
+\renewcommand{\fontsizeauthor}{\fontsize{33.55}{47.3} \selectfont}
+\newcommand{\fontsizeinstitution}{\fontsize{20}{25} \selectfont}
+% Section font
+\renewcommand{\fontsizesection}{\fontsize{42}{52} \selectfont}
+\renewcommand{\fontsizesubsection}{\fontsize{36}{45} \selectfont}
+
+% Changing font sizes for a specific text segment
+% Place the text inside brackets:
+% {\fontsize{28}{35} \selectfont Your text goes here}
+
+%% Changing colours
+% Background of side columns
+%\renewcommand{\columnbackgroundcolor}{black}
+% Font of side columns
+%\renewcommand{\columnfontcolor}{gray}
+% Background of main column
+%\renewcommand{\maincolumnbackgroundcolor}{empirical}
+%\renewcommand{\maincolumnbackgroundcolor}{theory}
+%\renewcommand{\maincolumnbackgroundcolor}{methods}
+%\renewcommand{\maincolumnbackgroundcolor}{intervention}
+% Font of main column
+%\renewcommand{\maincolumnfontcolor}{gray}
+
+% Disable hyphenation
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+\begin{document}
+\betterposter{
+ % MAIN COLUMN
+ \maincolumn{
+  % Main space
+  % \textbf{Reproducible GPU environments} with Pixi, Linux container images, and CHTC resources make complex scientific workflows \textbf{easy to run}
+  \textbf{Reproducible GPU workflows} with Pixi, Linux container images, and CHTC resources make complex hardware-accelerated scientific tasks \textbf{easy to run at scale}
+ }{
+  % Bottom space
+
+\begin{center}
+  % QR code
+  \qrcode{qr_code.pdf}{smartphoneWhite}{
+   \textbf{Take a picture} to get more
+   \\information, examples, and this poster\\
+   \href{https://github.com/matthewfeickert/poster-chtc-researcher-forum-2026}{github.com/matthewfeickert/poster-chtc-researcher-forum-2026}
+  }
+\end{center}
+}
+
+}{
+ % LEFT COLUMN
+ \title{Accelerating hardware-accelerated science}
+ \vspace{0.5em}
+ \author{{\href{https://www.matthewfeickert.com/}{Matthew Feickert}$^{1}$}}
+ \vspace{1.0em}
+ \institution{1 University of Wisconsin--Madison Data Science Institute}
+ %
+ \section{Hardware-accelerated science}
+ Machine learning is becoming a standard part of the modern scientist's toolkit.
+ As a result, the use of \textbf{hardware accelerators} (e.g. GPUs) in scientific software workflows is increasingly common.
+ Historically, GPU-enabled software could be difficult to work with and required expertise to deploy.
+
+ \vspace{1.0em}
+ \textbf{Reproducible environments with Pixi}
+ \vspace{1.0em}
+  \begin{center}
+   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.5\textwidth]{tools_pixi.pdf}}
+  \end{center}
+ \begin{itemize}
+  \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
+  \item Locking: automatic and Rust-fast
+  \item Define host-specific expectations of hardware resources (e.g. CUDA version)
+  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on Mac laptop, run on Linux machine with CUDA)
+ \end{itemize}
+
+ \vspace{1.0em}
+ \textbf{Linux container distributions}
+
+ \vspace{1.0em}
+ \begin{minipage}{0.50\textwidth}
+  \begin{center}
+   \href{https://www.docker.com/}{\includegraphics[width=0.8\textwidth]{docker-logo-blue.pdf}}
+  \end{center}
+ \end{minipage}%
+ \hfill
+ \begin{minipage}{0.50\textwidth}
+  \begin{center}
+   \href{https://apptainer.org/}{\includegraphics[width=0.8\textwidth]{apptainer_logo.pdf}}
+  \end{center}
+ \end{minipage}%
+ \vspace{1.0em}
+
+ \begin{itemize}
+  \item Deploy software environments to worker nodes through Docker and Apptainer \textbf{container images}
+  \item With Pixi environment, Dockerfile or Apptainer definition files become a \textbf{simple template}
+  \item Changes to environment can trigger rebuilds and redeployments of container images
+  \item Fast launching with CHTC's \texttt{/staging} and OSDF
+ \end{itemize}
+}{
+ % RIGHT COLUMN
+
+ \textbf{HTCondor containerized GPU jobs}
+
+ \vspace{1.0em}
+ \begin{minipage}{0.50\textwidth}
+  \begin{center}
+   \href{https://chtc.cs.wisc.edu/}{\includegraphics[width=0.85\textwidth]{chtc_logo.pdf}}
+  \end{center}
+ \end{minipage}%
+ \hfill
+ \begin{minipage}{0.50\textwidth}
+  \begin{center}
+   \href{https://htcondor.org/}{\includegraphics[width=\textwidth]{htcondor_logo.pdf}}
+  \end{center}
+ \end{minipage}%
+ \vspace{1.0em}
+ \begin{itemize}
+  \item CHTC's HTCondor deployment support \textbf{container universe}
+  \item Specific control over \textbf{GPU and CUDA capabilities} through submit description files
+  \item Parallel tasks can scaleout across CHTC GPU nodes
+ \end{itemize}
+
+ \subsection{Implementation}
+
+ \vspace{2.0em}
+ \begin{center}
+  \includegraphics[width=\textwidth]{implementation.png}
+ \end{center}
+ \vspace{2.0em}
+
+ \subsection{Applications in DSI driven science}
+ Data scientists and researchers at the \textbf{University of Wisconsin--Madison Data Science Institute} are using these workflow patterns across:
+ \begin{itemize}
+  \item High Energy Physics applications of simulation-based inference
+  \item Large-scale simulation of protein motions using molecular dynamics
+  \item Reinterfacing high-resolution rapid refresh weather data
+ \end{itemize}
+
+ \subsection{More information}
+ \begin{itemize}
+  \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for
+Scientists with Pixi}, \\\textbf{DOI: \href{https://doi.org/10.25080/nwuf8465}{10.25080/nwuf8465}}
+  \item \href{https://github.com/CHTC/templates-GPUs}{\textbf{github.com/CHTC/templates-GPUs}}
+  \item \href{https://github.com/CHTC/recipes}{\textbf{github.com/CHTC/recipes}}
+ \end{itemize}
+
+\vfill
+\begin{center}
+  \href{https://dsi.wisc.edu/}{\includegraphics[width=\textwidth]{DSI_logo.png}}
+\end{center}
+}
+\end{document}

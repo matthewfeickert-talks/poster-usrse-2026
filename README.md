@@ -1,2 +1,41 @@
 # poster-usrse-2026
 Poster for US-RSE Conference 2026
+
+# [CHTC Researcher Forum 2026][Forum] Poster
+
+Poster on "accelerating hardware-accelerated science" with Pixi, Linux container, and HTCondor at the [2nd CHTC Researcher Forum][Forum] on February 17, 2026.
+
+## Additional Information
+
+If you're arriving at this GitHub repository from the poster's QR code here's additional information sources you might find useful.
+
+* Matthew Feickert, Ruben Arts, John Kirkham, [_Reproducible Machine Learning Workflows for Scientists with Pixi_](https://inspirehep.net/literature/3071594), _Proceedings of 24th International SciPy Conference &mdash; SciPy 2025_, July, 2025. DOI: [10.25080/nwuf8465](https://doi.org/10.25080/nwuf8465)
+* Matthew Feickert, [Reproducible Machine Learning Workflows for Scientists](https://carpentries-incubator.github.io/reproducible-ml-workflows/) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17537698.svg)](https://doi.org/10.5281/zenodo.17537698)
+* Matthew Feickert, Ruben Arts, Katrina Riehl, [Reproducible CUDA Accelerated Workflows for Scientists with Pixi](https://matthewfeickert-talks.github.io/reproducible-cuda-workflows-with-pixi-scipy-2026/), SciPy 2026 Tutorial
+* Example configurations for using containerized Pixi environments with HTCondor and GPUs, [github.com/UW-Madison-DSI/pixi-docker-chtc](https://github.com/UW-Madison-DSI/pixi-docker-chtc)
+* Template job submissions using GPUs in CHTC, [github.com/CHTC/templates-GPUs](https://github.com/CHTC/templates-GPUs)
+* Recipes for building software and submitting jobs on CHTC, [github.com/CHTC/recipes](https://github.com/CHTC/recipes)
+
+## [Poster Criteria](https://chtc.cs.wisc.edu/uw-research-computing/researcher-forum-2026#call-for-posters)
+
+We're looking for posters that show what you are doing with our resources and how CHTC fits into your work!
+
+* **Project scope**: What is the big research question you're trying to answer?
+* **Progress**: What have you learned so far?
+* **Future work**: What do you plan to investigate next? What can you do if we give you more compute?
+* **Scale**: How much work can you get done with CHTC resources (CPU hours, number of simulations)?
+* **Automation and workflows**: How did you automate your work? What strategies do you use to create your workflow?
+* **Feedback**: What worked for you? What didn't work for you?
+
+### Poster Dimensions
+
+* 4 feet by 3 feet
+
+## Acknowledgements
+
+- Built using a modified version of [Rafael Bailo](https://github.com/rafaelbailo)'s [Better Poster Latex Template](https://github.com/rafaelbailo/betterposter-latex-template)
+   - The template is an implementation of [Mike Morrison](https://twitter.com/mikemorrison)'s ["Better Poster" proposal](https://youtu.be/1RwJbhkCA58)
+   - [Generation 1](https://www.youtube.com/watch?v=1RwJbhkCA58)
+   - [Generation 2](https://www.youtube.com/watch?v=SYk29tnxASs)
+
+[Forum]: https://chtc.cs.wisc.edu/uw-research-computing/researcher-forum-2026
