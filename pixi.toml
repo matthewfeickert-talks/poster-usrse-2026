@@ -10,10 +10,10 @@ cmd = "python ./qr_code.py"
 
 [tasks.poster]
 cmd = """
-latexmk -pdflatex -logfilewarnings -halt-on-error poster
+tectonic poster.tex
 """
 
 [dependencies]
-texlive-core = ">=20260301,<20260302"
+tectonic = ">=0.17.0,<0.18"
 qrcode = ">=8.2,<9"
 rsync = ">=3.4.4,<4"
