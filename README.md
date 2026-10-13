@@ -1,9 +1,6 @@
-# poster-usrse-2026
-Poster for US-RSE Conference 2026
+# [USRSE 2026][USRSE2026] Poster
 
-# [CHTC Researcher Forum 2026][Forum] Poster
-
-Poster on "accelerating hardware-accelerated science" with Pixi, Linux container, and HTCondor at the [2nd CHTC Researcher Forum][Forum] on February 17, 2026.
+Poster on "Reproducible Software Environments for Hardware-Accelerated Science" at the [US-RSE Conference 2026][USRSE2026] on October 19, 2026.
 
 ## Additional Information
 
@@ -16,7 +13,12 @@ If you're arriving at this GitHub repository from the poster's QR code here's ad
 * Template job submissions using GPUs in CHTC, [github.com/CHTC/templates-GPUs](https://github.com/CHTC/templates-GPUs)
 * Recipes for building software and submitting jobs on CHTC, [github.com/CHTC/recipes](https://github.com/CHTC/recipes)
 
-## [Poster Criteria](https://chtc.cs.wisc.edu/uw-research-computing/researcher-forum-2026#call-for-posters)
+## [Poster Criteria](https://docs.google.com/document/d/1yJ97dJ3dBt_Gw5qeZ0lDYGjyq5cd_X8oEoyVRADtMlU/edit?tab=t.0)
+
+* Upload a PDF of your abstract to Zenodo by Wednesday, September 16th, 2026.
+* Add PDF of poster to the Zenodo by Wednesday, October 21st, 2026.
+* Posters may be printed up to 44 x 44 inches.
+
 
 We're looking for posters that show what you are doing with our resources and how CHTC fits into your work!
 
@@ -38,4 +40,4 @@ We're looking for posters that show what you are doing with our resources and ho
    - [Generation 1](https://www.youtube.com/watch?v=1RwJbhkCA58)
    - [Generation 2](https://www.youtube.com/watch?v=SYk29tnxASs)
 
-[Forum]: https://chtc.cs.wisc.edu/uw-research-computing/researcher-forum-2026
+[USRSE2026]: https://us-rse.org/usrse26/
