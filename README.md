@@ -19,20 +19,6 @@ If you're arriving at this GitHub repository from the poster's QR code here's ad
 * Add PDF of poster to the Zenodo by Wednesday, October 21st, 2026.
 * Posters may be printed up to 44 x 44 inches.
 
-
-We're looking for posters that show what you are doing with our resources and how CHTC fits into your work!
-
-* **Project scope**: What is the big research question you're trying to answer?
-* **Progress**: What have you learned so far?
-* **Future work**: What do you plan to investigate next? What can you do if we give you more compute?
-* **Scale**: How much work can you get done with CHTC resources (CPU hours, number of simulations)?
-* **Automation and workflows**: How did you automate your work? What strategies do you use to create your workflow?
-* **Feedback**: What worked for you? What didn't work for you?
-
-### Poster Dimensions
-
-* 4 feet by 3 feet
-
 ## Acknowledgements
 
 - Built using a modified version of [Rafael Bailo](https://github.com/rafaelbailo)'s [Better Poster Latex Template](https://github.com/rafaelbailo/betterposter-latex-template)
