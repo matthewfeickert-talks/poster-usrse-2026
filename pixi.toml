@@ -13,6 +13,9 @@ cmd = """
 tectonic poster.tex
 """
 
+[tasks.start]
+depends-on = ["poster"]
+
 [dependencies]
 tectonic = ">=0.17.0,<0.18"
 qrcode = ">=8.2,<9"
