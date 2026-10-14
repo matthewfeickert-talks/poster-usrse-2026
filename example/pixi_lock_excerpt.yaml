@@ -1,0 +1,26 @@
+# Excerpt of pixi.lock that is shown on the poster, with the sha256 digests and
+# the channel URL of the package elided as they are too long for the poster
+# column. Update it if pixi.lock changes.
+version: 7
+platforms:
+- name: linux-64-cuda
+  subdir: linux-64
+  virtual-packages:
+  - __cuda=13
+  - __unix=0=0
+  - __linux=4.18
+  - __glibc=2.28
+  - __archspec=0=x86_64
+- name: win-64-cuda
+  subdir: win-64
+packages:
+- conda: .../pytorch-2.13.0-cuda134_mkl_py314_ha509225_305.conda
+  sha256: 3425edcf173ab4c5feeda8d8e8...
+  md5: ff3c89be2075d6738e6fe3a91794b2a2
+  depends:
+  - __cuda
+  - __glibc >=2.28,<3.0.a0
+  - _openmp_mutex * *_llvm
+  - _openmp_mutex >=4.5
+  - cuda-cudart >=13.4.92,<14.0a0
+  - cuda-cupti >=13.4.92,<14.0a0

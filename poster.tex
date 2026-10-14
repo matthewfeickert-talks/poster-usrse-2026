@@ -88,6 +88,19 @@
 % Resources and references font, smaller than the text font so that the
 % right column fits above the logos
 \newcommand{\fontsizeresources}{\fontsize{26}{34} \selectfont}
+% Footnotes are set at the bottom of the column (a minipage) that they are in.
+% Number them with symbols instead of the minipage default of letters, and set
+% them in the resources font, as \footnotesize is for 10pt documents.
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}
+\renewcommand{\footnotesize}{\fontsizeresources}
+% The default footnote spacing is also for 10pt documents. \footnotesep is the
+% height of the strut above the first line, which keeps it clear of the rule.
+\setlength{\footnotesep}{24pt}
+\makeatletter
+\setlength{\skip\@mpfootins}{12pt}
+% Set footnotes without the default paragraph indent
+\renewcommand{\@makefntext}[1]{\noindent\@makefnmark#1}
+\makeatother
 % QR code caption font
 \renewcommand{\fontsizeqrcode}{\fontsize{40}{52} \selectfont}
 
@@ -148,7 +161,8 @@
 
  \subsection{Reproducible environments with Pixi}
   \begin{center}
-   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.5\textwidth]{tools_pixi.pdf}}
+   % Kept small to leave room for the lock file excerpts
+   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.30\textwidth]{tools_pixi.pdf}}
   \end{center}
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
@@ -158,27 +172,70 @@
  \end{itemize}
 
  \subsection{Manifest and lock file}
- \vspace{0.5em}
  \textbf{\texttt{pixi.toml}} (excerpt)
- % Omits version, the empty [dependencies] table, and the win-64-cuda target,
- % which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
- \lstinputlisting[language=TOML,linerange={1-7,9-12,15-20}]{example/pixi.toml}
- \vspace{0.5em}
- \textbf{\texttt{pixi.lock}} (excerpt)
- \lstinputlisting[language=PixiLock,linerange={1-14}]{example/pixi.lock}
+ % Omits version, the empty [tasks] and [dependencies] tables, and the win-64-cuda
+ % target, which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
+ \lstinputlisting[language=TOML,linerange={1-7,13-18}]{example/pixi.toml}
+ \vspace{0.25em}
+ \textbf{\texttt{pixi.lock}} (excerpt)\par
+ % Side by side, from example/pixi_lock_excerpt.yaml: the linux-64-cuda platform
+ % from the top of the lock file, and the start of the locked pytorch package.
+ % The widths fit the longest line of the platform excerpt.
+ % The listings frame of the second of two side-by-side listings is drawn offset
+ % by xleftmargin, so both listings are set without a frame in a box that has
+ % the listings background and frame separation.
+ % \vspace{0pt} aligns the minipages by their top edges instead of their first
+ % baselines, so that the two boxes start at the same height.
+ % \nointerlineskip and \medskipamount give the same gap below the label as the
+ % listings aboveskip gives below the pixi.toml label.
+ \nointerlineskip\vspace{\medskipamount}
+ \noindent
+ \begin{minipage}[t]{0.37\textwidth}
+  \vspace{0pt}
+  \setlength{\fboxsep}{8pt}%
+  \colorbox{black!4}{\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
+   \lstinputlisting[language=PixiLock,linerange={4-15},frame=none,xleftmargin=0pt,xrightmargin=0pt,aboveskip=0pt,belowskip=0pt]{example/pixi_lock_excerpt.yaml}
+  \end{minipage}}
+ \end{minipage}%
+ \hfill
+ \begin{minipage}[t]{0.61\textwidth}
+  \vspace{0pt}
+  \setlength{\fboxsep}{8pt}%
+  \colorbox{black!4}{\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
+   % The package URL is longer than the column, so it is wrapped. listings
+   % breaks lines at discretionary hyphens, which the poster-wide hyphenation
+   % penalties below \begin{document} disable, so restore the defaults here.
+   \hyphenpenalty=50 \exhyphenpenalty=50
+   \lstinputlisting[language=PixiLock,linerange={16-26},frame=none,xleftmargin=0pt,xrightmargin=0pt,aboveskip=0pt,belowskip=0pt,breaklines=true,breakindent=2em]{example/pixi_lock_excerpt.yaml}
+  \end{minipage}}
+ \end{minipage}\par
+ % Set the result at the bottom of the column, level with the logos at the
+ % bottom of the right column, with a minimum gap below the lock file excerpts.
+ % The column is full, so content added above this pushes it into the bottom
+ % margin without any overfull box warning: check the PDF after changes.
+ \vspace{1em}\vfill
+ % From drift_study/: the 2025-01-01 environment compared to that of 2026-10-01
+ \textbf{No lock file counterfactual}\\Compare 2025-01-01 and 2026-10-01 solves\footnote{Upper bounds selected using release notes}: 67 of 113 packages had new major/minor versions, 24 were dropped, and 39 added. Environments might run, but are not the same.\par
+ % The footnote is there because the study widens two upper version bounds
+ % beyond what 'pixi add' would default to, which changes the numbers.
+ % c.f. drift_study/README.md
 }{
  % RIGHT COLUMN
  \subsection{Linux container distributions}
  \vspace{0.5em}
+ % The logos have the same height, which is between the heights of the Pixi
+ % figure and the logo crests, so that they are in proportion with them.
+ % Inside the minipages \textwidth is the minipage width, so 0.5\textwidth is
+ % a quarter of the column width.
  \begin{minipage}{0.50\textwidth}
   \begin{center}
-   \href{https://apptainer.org/}{\includegraphics[width=0.8\textwidth]{apptainer_logo.pdf}}
+   \href{https://apptainer.org/}{\includegraphics[height=0.5\textwidth]{apptainer_logo.pdf}}
   \end{center}
  \end{minipage}%
  \hfill
  \begin{minipage}{0.50\textwidth}
   \begin{center}
-   \href{https://www.docker.com/}{\includegraphics[width=0.8\textwidth]{docker-logo-blue.pdf}}
+   \href{https://www.docker.com/}{\includegraphics[height=0.5\textwidth]{docker-logo-blue.pdf}}
   \end{center}
  \end{minipage}%
  \vspace{1.0em}
@@ -190,15 +247,19 @@
   \item \emoji{26a0}~\textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
  \end{itemize}
 
+ % Share the space left in the column equally above each of the following
+ % subsections, so that the logos end at the bottom of the column
+ \vfill
  \subsection{Applications in DSI-driven science}
  Data scientists and researchers at the \textbf{University of Wisconsin--Madison Data Science Institute} are using these workflow patterns across:
  \begin{itemize}
   \item High energy physics applications of simulation-based inference
-  \item Plasma physics end-to-end pipelines for transport-consistent stellarator optimization (\href{https://github.com/driftless-star/driftless-star}{\textcolor{linkblue}{github.com/driftless-star/driftless-star}})
+  \item End-to-end agentic pipeline for nuclear fusion device optimization (\href{https://github.com/driftless-star/driftless-star}{\textcolor{linkblue}{github.com/driftless-star/driftless-star}})
   \item Large-scale simulation of protein motions using molecular dynamics
-  \item Reinterfacing high-resolution rapid refresh weather data
+  \item Reinterfacing high-resolution rapid refresh weather data (\href{https://github.com/UW-Madison-DSI/weather\_api}{\textcolor{linkblue}{github.com/UW-Madison-DSI/weather\_api}})
  \end{itemize}
 
+ \vfill
  \subsection{Resources and more information}
  {\fontsizeresources
  \begin{itemize}
@@ -209,21 +270,24 @@
  \end{itemize}
  }
 
-% Keep a minimum gap above the logos when the column is full
-\vspace{1.0em}
 \vfill
+\subsection{Acknowledgements}
 % Scale the logos so that their crests have the same height and left edge.
 % Measured in pixels: in DSI_logo.png the crest is 339 of the 356 px image
-% height and starts 4 px from the left edge, and in ospo_logo.png it is
-% 313 of 395 px and starts 9 px from the left edge.
-% ospo_logo.png has more white space above the crest, so less vertical
-% space is added between the logos.
+% height and starts 4 px from the left edge, and in ospo_logo.pdf
+% rendered at 300 dpi it is 341 of 353 px and starts 4 px from the left edge.
+% The OSPO logo is the wider of the two, so its width sets the largest crest
+% height that fits the column, which is about 140pt. The crest height is
+% smaller so that the column also fits the acknowledgement text below them.
 \newlength{\logocrestheight}
-\setlength{\logocrestheight}{135pt}
+\setlength{\logocrestheight}{115pt}
 \noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
 
-\vspace{0.2em}
-\noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*9/313\relax}%
-\href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*395/313\relax]{ospo_logo.png}}
+\vspace{0.5em}
+\noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*4/341\relax}%
+\href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*353/341\relax]{ospo_logo.pdf}}
+
+\vspace{0.3em}
+{\fontsizeresources The UW--Madison OSPO is supported by the Alfred~P.~Sloan Foundation (grant \href{https://sloan.org/grant-detail/g-2025-25265}{G-2025-25265}).\par}
 }
 \end{document}

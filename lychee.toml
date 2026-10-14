@@ -1,0 +1,8 @@
+# Configuration for the check-links task, which lychee reads from the current
+# directory, cf. https://lychee.cli.rs/guides/config/
+
+# poster.tex is checked as plain text, which reads the LaTeX escape in the URL
+# text weather\_api as a path separator. Map it back to the URL in the poster.
+remap = [
+  "https://github.com/UW-Madison-DSI/weather/_api https://github.com/UW-Madison-DSI/weather_api",
+]
