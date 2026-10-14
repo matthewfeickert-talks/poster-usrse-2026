@@ -6,6 +6,13 @@
 
 % Highlight colour for DOI and URL links so that they stand out from the surrounding text
 \definecolor{linkblue}{RGB}{0,102,204}
+% XeTeX cannot render color emoji fonts, so emoji are included as images.
+% The emoji SVGs in figures/ are from Noto Emoji (Apache 2.0),
+% cf. https://github.com/googlefonts/noto-emoji/tree/main/2D/svg
+% and are named by their Unicode code point (e.g. emoji_u1f4a1 is U+1F4A1).
+% List each emoji added to figures/ in figures/LICENSE-noto-emoji.
+\newcommand{\emoji}[1]{\raisebox{-0.15em}{\includegraphics[height=1.1em]{emoji_u#1.pdf}}}
+
 % UW-Madison brand red, which matches the DSI and OSPO logos
 % Badger Red, #C5050C, cf. https://brand.wisc.edu/web/colors
 \definecolor{uwred}{RGB}{197,5,12}
@@ -145,8 +152,8 @@
   \end{center}
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
-  \item Locking: digest-level, automatic, Rust-fast
-  \item Define host-specific expectations of hardware resources (e.g.\ CUDA version)
+  \item Locking: digest-level, automatic, Rust-fast~\emoji{1f680}
+  \item Define host-specific expectations of hardware resources (e.g.\ CUDA version)~\emoji{26a1}
   \item Resolve environments for \textbf{multiple platforms} other than solve machine (e.g.\ solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA stack from conda-forge)
  \end{itemize}
 
@@ -179,8 +186,8 @@
  \begin{itemize}
   \item Deploy software environments to HTC, HPC, and cloud (e.g.\ HTCondor, Slurm, and Kubernetes) worker nodes through Apptainer and Docker \textbf{Linux container images}
   \item With Pixi environment, Apptainer definition files and Dockerfiles become \textbf{simple templates}
-  \item \textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (from PR merge to using new containerized environment in production in less than 10 minutes)
-  \item \textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
+  \item \emoji{1f4a1}~\textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (from PR merge to using new containerized environment in production in less than 10 minutes)
+  \item \emoji{26a0}~\textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
  \end{itemize}
 
  \subsection{Applications in DSI-driven science}
