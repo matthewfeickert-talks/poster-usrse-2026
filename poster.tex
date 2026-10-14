@@ -121,7 +121,7 @@
   % QR code
   \qrcode{qr_code.pdf}{smartphoneWhite}{
   \renewcommand{\bfdefault}{ub}%
-   \textbf{Scan QR code} to get more information, examples, and this poster\\[0.25em]
+   \textbf{Scan the QR code} to get more information, examples, and this poster\\[0.25em]
    % The URL only fits on one line at the text font size
    {\fontsizestandard\href{https://github.com/matthewfeickert-talks/poster-usrse-2026}{github.com/matthewfeickert-talks/poster-usrse-2026}}
   }
@@ -131,12 +131,12 @@
 }{
  % LEFT COLUMN
  \title{Reproducible Software Environments for Hardware-Accelerated Science}
- \author{\textcolor{uwred}{\textbf{\href{https://www.matthewfeickert.com/}{Matthew Feickert}}$^{1}$}}
- \institution{\textcolor{uwred}{\textbf{1 University of Wisconsin--Madison Data Science Institute}}}
+ \author{\textcolor{uwred}{\textbf{\href{https://www.matthewfeickert.com/}{Matthew Feickert}\textsuperscript{1}}}}
+ \institution{\textcolor{uwred}{\textbf{\textsuperscript{1}University of Wisconsin--Madison Data Science Institute}}}
  %
  \section{Hardware-accelerated science}
  Machine learning is becoming a standard part of the modern scientist's toolkit.
- As a result, the use of \textbf{hardware accelerators} (e.g. GPUs) in scientific software workflows is increasingly common.
+ As a result, the use of \textbf{hardware accelerators} (e.g.\ GPUs) in scientific software workflows is increasingly common.
  Historically, GPU-enabled software could be difficult to work with and required expertise to deploy.
 
  \subsection{Reproducible environments with Pixi}
@@ -146,8 +146,8 @@
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
   \item Locking: digest-level, automatic, Rust-fast
-  \item Define host-specific expectations of hardware resources (e.g. CUDA version)
-  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA stack from conda-forge)
+  \item Define host-specific expectations of hardware resources (e.g.\ CUDA version)
+  \item Resolve environments for \textbf{multiple platforms} other than solve machine (e.g.\ solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA stack from conda-forge)
  \end{itemize}
 
  \subsection{Manifest and lock file}
@@ -177,16 +177,16 @@
  \vspace{1.0em}
 
  \begin{itemize}
-  \item Deploy software environments to HTC, HPC, and cloud (e.g. HTCondor, Slurm, and Kubernetes) worker nodes through Apptainer and Docker \textbf{Linux container images}
-  \item With Pixi environment, Apptainer definition files or Dockerfiles become a \textbf{simple template}
-  \item \textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (PR merge to using new containerized environment in production in less than 10 minutes)
+  \item Deploy software environments to HTC, HPC, and cloud (e.g.\ HTCondor, Slurm, and Kubernetes) worker nodes through Apptainer and Docker \textbf{Linux container images}
+  \item With Pixi environment, Apptainer definition files and Dockerfiles become \textbf{simple templates}
+  \item \textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (from PR merge to using new containerized environment in production in less than 10 minutes)
   \item \textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
  \end{itemize}
 
- \subsection{Applications in DSI driven science}
+ \subsection{Applications in DSI-driven science}
  Data scientists and researchers at the \textbf{University of Wisconsin--Madison Data Science Institute} are using these workflow patterns across:
  \begin{itemize}
-  \item High Energy Physics applications of simulation-based inference
+  \item High energy physics applications of simulation-based inference
   \item Plasma physics end-to-end pipelines for transport-consistent stellarator optimization (\href{https://github.com/driftless-star/driftless-star}{\textcolor{linkblue}{github.com/driftless-star/driftless-star}})
   \item Large-scale simulation of protein motions using molecular dynamics
   \item Reinterfacing high-resolution rapid refresh weather data
