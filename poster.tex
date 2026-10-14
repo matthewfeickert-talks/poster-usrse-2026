@@ -214,16 +214,16 @@
 \vfill
 % Scale the logos so that their crests have the same height and left edge.
 % Measured in pixels: in DSI_logo.png the crest is 339 of the 356 px image
-% height and starts 4 px from the left edge, and in ospo_logo.png it is
-% 313 of 395 px and starts 9 px from the left edge.
-% ospo_logo.png has more white space above the crest, so less vertical
-% space is added between the logos.
+% height and starts 4 px from the left edge, and in ospo_logo.pdf
+% rendered at 300 dpi it is 341 of 353 px and starts 4 px from the left edge.
+% The OSPO logo is the wider of the two, so its width sets the largest crest
+% height that fits the column.
 \newlength{\logocrestheight}
 \setlength{\logocrestheight}{135pt}
 \noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
 
-\vspace{0.2em}
-\noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*9/313\relax}%
-\href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*395/313\relax]{ospo_logo.png}}
+\vspace{0.5em}
+\noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*4/341\relax}%
+\href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*353/341\relax]{ospo_logo.pdf}}
 }
 \end{document}
