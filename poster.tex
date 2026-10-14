@@ -6,6 +6,8 @@
 
 % Highlight colour for DOI and URL links so that they stand out from the surrounding text
 \definecolor{linkblue}{RGB}{0,102,204}
+% UW-Madison brand red, which matches the DSI and OSPO logos
+\definecolor{uwred}{RGB}{197,5,12}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\textcolor{linkblue}{#1}}}
 
 % Code listings of the example Pixi manifest and lock file, read from example/
@@ -128,8 +130,8 @@
 }{
  % LEFT COLUMN
  \title{Reproducible Software Environments for Hardware-Accelerated Science}
- \author{\textcolor{\columnfontcolor}{\textbf{\href{https://www.matthewfeickert.com/}{Matthew Feickert}}$^{1}$}}
- \institution{\textcolor{\columnfontcolor}{\textbf{1 University of Wisconsin--Madison Data Science Institute}}}
+ \author{\textcolor{uwred}{\textbf{\href{https://www.matthewfeickert.com/}{Matthew Feickert}}$^{1}$}}
+ \institution{\textcolor{uwred}{\textbf{1 University of Wisconsin--Madison Data Science Institute}}}
  %
  \section{Hardware-accelerated science}
  Machine learning is becoming a standard part of the modern scientist's toolkit.
