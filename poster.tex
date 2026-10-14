@@ -88,6 +88,19 @@
 % Resources and references font, smaller than the text font so that the
 % right column fits above the logos
 \newcommand{\fontsizeresources}{\fontsize{26}{34} \selectfont}
+% Footnotes are set at the bottom of the column (a minipage) that they are in.
+% Number them with symbols instead of the minipage default of letters, and set
+% them in the resources font, as \footnotesize is for 10pt documents.
+\renewcommand{\thempfootnote}{\fnsymbol{mpfootnote}}
+\renewcommand{\footnotesize}{\fontsizeresources}
+% The default footnote spacing is also for 10pt documents. \footnotesep is the
+% height of the strut above the first line, which keeps it clear of the rule.
+\setlength{\footnotesep}{24pt}
+\makeatletter
+\setlength{\skip\@mpfootins}{12pt}
+% Set footnotes without the default paragraph indent
+\renewcommand{\@makefntext}[1]{\noindent\@makefnmark#1}
+\makeatother
 % QR code caption font
 \renewcommand{\fontsizeqrcode}{\fontsize{40}{52} \selectfont}
 
@@ -149,7 +162,7 @@
  \subsection{Reproducible environments with Pixi}
   \begin{center}
    % Kept small to leave room for the lock file excerpts
-   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.3\textwidth]{tools_pixi.pdf}}
+   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.30\textwidth]{tools_pixi.pdf}}
   \end{center}
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
@@ -159,12 +172,11 @@
  \end{itemize}
 
  \subsection{Manifest and lock file}
- \vspace{0.5em}
  \textbf{\texttt{pixi.toml}} (excerpt)
  % Omits version, the empty [tasks] and [dependencies] tables, and the win-64-cuda
  % target, which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
  \lstinputlisting[language=TOML,linerange={1-7,13-18}]{example/pixi.toml}
- \vspace{0.5em}
+ \vspace{0.25em}
  \textbf{\texttt{pixi.lock}} (excerpt)\par
  % Side by side, from example/pixi_lock_excerpt.yaml: the linux-64-cuda platform
  % from the top of the lock file, and the start of the locked pytorch package.
@@ -199,11 +211,14 @@
  \end{minipage}\par
  % Set the result at the bottom of the column, level with the logos at the
  % bottom of the right column, with a minimum gap below the lock file excerpts.
- % The column is full, so the minimum gap sets the result slightly into the
- % bottom margin, which is still well inside the printable area.
+ % The column is full, so content added above this pushes it into the bottom
+ % margin without any overfull box warning: check the PDF after changes.
  \vspace{1em}\vfill
  % From drift_study/: the 2025-01-01 environment compared to that of 2026-10-01
- \textbf{No lock file counterfactual}\\Compare 2025-01-01 and 2026-10-01 solves: 67 of 113 packages had new major/minor versions, 24 were dropped, and 39 added. Environments might run, but are not the same.\par
+ \textbf{No lock file counterfactual}\\Compare 2025-01-01 and 2026-10-01 solves\footnote{Modified upper bounds from release notes}: 67 of 113 packages had new major/minor versions, 24 were dropped, and 39 added. Environments might run, but are not the same.\par
+ % The footnote is there because the study widens two upper version bounds
+ % beyond what 'pixi add' would default to, which changes the numbers.
+ % c.f. drift_study/README.md
 }{
  % RIGHT COLUMN
  \subsection{Linux container distributions}
