@@ -185,7 +185,7 @@
 
  \begin{itemize}
   \item Deploy software environments to HTC, HPC, and cloud (e.g.\ HTCondor, Slurm, and Kubernetes) worker nodes through Apptainer and Docker \textbf{Linux container images}
-  \item With Pixi environment, Apptainer definition files and Dockerfiles become \textbf{simple templates}
+  \item With Pixi environment, Apptainer definition files \& Dockerfiles become \textbf{simple~templates}
   \item \emoji{1f4a1}~\textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (from PR merge to using new containerized environment in production in less than 10 minutes)
   \item \emoji{26a0}~\textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
  \end{itemize}
@@ -209,6 +209,8 @@
  \end{itemize}
  }
 
+% Keep a minimum gap above the logos when the column is full
+\vspace{1.0em}
 \vfill
 % Scale the logos so that their crests have the same height and left edge.
 % Measured in pixels: in DSI_logo.png the crest is 339 of the 356 px image
@@ -217,7 +219,7 @@
 % ospo_logo.png has more white space above the crest, so less vertical
 % space is added between the logos.
 \newlength{\logocrestheight}
-\setlength{\logocrestheight}{145pt}
+\setlength{\logocrestheight}{135pt}
 \noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
 
 \vspace{0.2em}
