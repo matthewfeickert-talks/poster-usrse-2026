@@ -262,13 +262,17 @@
 % height and starts 4 px from the left edge, and in ospo_logo.pdf
 % rendered at 300 dpi it is 341 of 353 px and starts 4 px from the left edge.
 % The OSPO logo is the wider of the two, so its width sets the largest crest
-% height that fits the column.
+% height that fits the column, which is about 140pt. The crest height is
+% smaller so that the column also fits the acknowledgement text below them.
 \newlength{\logocrestheight}
-\setlength{\logocrestheight}{135pt}
+\setlength{\logocrestheight}{115pt}
 \noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
 
 \vspace{0.5em}
 \noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*4/341\relax}%
 \href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*353/341\relax]{ospo_logo.pdf}}
+
+\vspace{0.3em}
+{\fontsizeresources The UW--Madison OSPO is supported by the Alfred~P.~Sloan Foundation (grant \href{https://sloan.org/grant-detail/g-2025-25265}{G-2025-25265}).\par}
 }
 \end{document}
