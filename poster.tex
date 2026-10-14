@@ -4,6 +4,10 @@
 \graphicspath{{figures/}}
 \usepackage[hidelinks]{hyperref}
 
+% DOI link, highlighted so that it stands out from the surrounding text
+\definecolor{doiblue}{RGB}{0,102,204}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\textcolor{doiblue}{#1}}}
+
 % Uncomment the following commands to customise the format
 
 %% Setting the width of columns
@@ -85,8 +89,8 @@
 }{
  % LEFT COLUMN
  \title{Reproducible Software Environments for Hardware-Accelerated Science}
- \author{{\href{https://www.matthewfeickert.com/}{Matthew Feickert}$^{1}$}}
- \institution{1 University of Wisconsin--Madison Data Science Institute}
+ \author{\textcolor{\columnfontcolor}{\textbf{\href{https://www.matthewfeickert.com/}{Matthew Feickert}}$^{1}$}}
+ \institution{\textcolor{\columnfontcolor}{\textbf{1 University of Wisconsin--Madison Data Science Institute}}}
  %
  \section{Hardware-accelerated science}
  Machine learning is becoming a standard part of the modern scientist's toolkit.
@@ -165,8 +169,8 @@
 
  \subsection{More information}
  \begin{itemize}
-  \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for
-Scientists with Pixi}, \\\textbf{DOI: \href{https://doi.org/10.25080/nwuf8465}{10.25080/nwuf8465}}
+  \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.25080/nwuf8465}}
+  \item Matthew Feickert, Ruben Arts, Katrina Riehl, \emph{Reproducible CUDA Accelerated Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.5281/zenodo.21829174}}
   \item \href{https://github.com/CHTC/templates-GPUs}{\textbf{github.com/CHTC/templates-GPUs}}
  \end{itemize}
 
