@@ -75,6 +75,9 @@
 \renewcommand{\fontsizesection}{\fontsize{44}{54} \selectfont}
 % Subsection font
 \renewcommand{\fontsizesubsection}{\fontsize{36}{45} \selectfont}
+% Resources and references font, smaller than the text font so that the
+% right column fits above the logos
+\newcommand{\fontsizeresources}{\fontsize{26}{34} \selectfont}
 % QR code caption font
 \renewcommand{\fontsizeqrcode}{\fontsize{40}{52} \selectfont}
 
@@ -187,12 +190,14 @@
  \end{itemize}
 
  \subsection{Resources and more information}
+ {\fontsizeresources
  \begin{itemize}
   \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.25080/nwuf8465}}
   \item Matthew Feickert, \emph{Reproducible Machine Learning Workflows for Scientists}, \\\textbf{DOI: \doi{10.5281/zenodo.17537698}}
   \item Matthew Feickert, Ruben Arts, Katrina Riehl, \emph{Reproducible CUDA Accelerated Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.5281/zenodo.21829174}}
   \item \href{https://github.com/CHTC/templates-GPUs}{\textbf{\textcolor{linkblue}{github.com/CHTC/templates-GPUs}}}
  \end{itemize}
+ }
 
 \vfill
 % Scale the logos so that their crests have the same height and left edge.
@@ -202,7 +207,7 @@
 % ospo_logo.png has more white space above the crest, so less vertical
 % space is added between the logos.
 \newlength{\logocrestheight}
-\setlength{\logocrestheight}{160pt}
+\setlength{\logocrestheight}{145pt}
 \noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
 
 \vspace{0.2em}
