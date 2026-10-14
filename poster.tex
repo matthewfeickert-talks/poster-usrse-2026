@@ -68,7 +68,7 @@
  \maincolumn{
   % Main space
   % \textbf{Reproducible GPU environments} with Pixi, Linux container images, and CHTC resources make complex scientific workflows \textbf{easy to run}
-  \textbf{Reproducible GPU workflows} with Pixi, Linux container images, and CHTC resources make complex hardware-accelerated scientific tasks \textbf{easy to run at scale}
+  \textbf{Reproducible GPU workflows} with Pixi and Linux container images make complex, distributed hardware-accelerated scientific tasks \textbf{easy to run at scale}
  }{
   % Bottom space
 
@@ -168,12 +168,21 @@
   \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for
 Scientists with Pixi}, \\\textbf{DOI: \href{https://doi.org/10.25080/nwuf8465}{10.25080/nwuf8465}}
   \item \href{https://github.com/CHTC/templates-GPUs}{\textbf{github.com/CHTC/templates-GPUs}}
-  \item \href{https://github.com/CHTC/recipes}{\textbf{github.com/CHTC/recipes}}
  \end{itemize}
 
 \vfill
-\begin{center}
-  \href{https://dsi.wisc.edu/}{\includegraphics[width=\textwidth]{DSI_logo.png}}
-\end{center}
+% Scale the logos so that their crests have the same height and left edge.
+% Measured in pixels: in DSI_logo.png the crest is 339 of the 356 px image
+% height and starts 4 px from the left edge, and in ospo_logo.png it is
+% 313 of 395 px and starts 9 px from the left edge.
+% ospo_logo.png has more white space above the crest, so less vertical
+% space is added between the logos.
+\newlength{\logocrestheight}
+\setlength{\logocrestheight}{160pt}
+\noindent\href{https://dsi.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*356/339\relax]{DSI_logo.png}}
+
+\vspace{0.2em}
+\noindent\hspace*{\dimexpr \logocrestheight*4/339 - \logocrestheight*9/313\relax}%
+\href{https://ospo.wisc.edu/}{\includegraphics[height=\dimexpr \logocrestheight*395/313\relax]{ospo_logo.png}}
 }
 \end{document}
