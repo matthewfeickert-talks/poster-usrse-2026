@@ -1,0 +1,26 @@
+[workspace]
+channels = ["conda-forge"]
+name = "example"
+platforms = [
+  { name = "linux-64-cuda", platform = "linux-64", cuda = "13" },
+  { name = "win-64-cuda", platform = "win-64", cuda = "12" }
+]
+version = "0.1.0"
+
+[tasks.train]
+description = "Train a PyTorch classifier"
+cmd = "python ./main.py --epochs 100 --save-model"
+
+[dependencies]
+
+[target.linux-64-cuda.dependencies]
+numba-cuda = ">=0.30.4,<0.31"
+pytorch-gpu = ">=2.13.0,<3"
+torchvision = ">=0.28.0,<0.29"
+cuda-version = "13.*"
+
+[target.win-64-cuda.dependencies]
+numba-cuda = ">=0.30.4,<0.31"
+pytorch-gpu = ">=2.13.0,<3"
+torchvision = ">=0.28.0,<0.29"
+cuda-version = "12.*"
