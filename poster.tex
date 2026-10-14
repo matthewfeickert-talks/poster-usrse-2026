@@ -104,8 +104,10 @@
  % MAIN COLUMN
  \maincolumn{
   % Main space
-  % \textbf{Reproducible GPU environments} with Pixi, Linux container images, and CHTC resources make complex scientific workflows \textbf{easy to run}
-  \textbf{Reproducible GPU workflows} with Pixi and Linux container images make complex, distributed hardware-accelerated scientific tasks \textbf{easy to run at scale}
+  % Set \textbf in Lato Black (series ub) instead of Lato Bold so that the
+  % highlighted text stands out more. This only applies inside the main column.
+  \renewcommand{\bfdefault}{ub}%
+  \textbf{Reproducible software environments} built with Pixi and Linux containers make \textbf{distributed}, \textbf{hardware-accelerated} science \textbf{easy to run at~scale}
  }{
   % Bottom space
 
