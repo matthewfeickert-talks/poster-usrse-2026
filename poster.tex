@@ -141,14 +141,14 @@
   \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA)
  \end{itemize}
 
- \subsection{Manifest and lockfile}
+ \subsection{Manifest and lock file}
  \vspace{0.5em}
- \texttt{pixi.toml} (excerpt)
+ \textbf{\texttt{pixi.toml}} (excerpt)
  % Omits version, the empty [dependencies] table, and the win-64-cuda target,
  % which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
  \lstinputlisting[language=TOML,linerange={1-7,9-12,15-20}]{example/pixi.toml}
  \vspace{0.5em}
- \texttt{pixi.lock} (excerpt)
+ \textbf{\texttt{pixi.lock}} (excerpt)
  \lstinputlisting[language=PixiLock,linerange={1-14}]{example/pixi.lock}
 }{
  % RIGHT COLUMN
