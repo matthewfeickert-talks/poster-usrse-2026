@@ -149,7 +149,7 @@
  \subsection{Reproducible environments with Pixi}
   \begin{center}
    % Kept small to leave room for the lock file excerpts
-   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.35\textwidth]{tools_pixi.pdf}}
+   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.3\textwidth]{tools_pixi.pdf}}
   \end{center}
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
@@ -198,8 +198,10 @@
   \end{minipage}}
  \end{minipage}\par
  % Set the result at the bottom of the column, level with the logos at the
- % bottom of the right column, with a minimum gap below the lock file excerpts
- \vspace{0.5em}\vfill
+ % bottom of the right column, with a minimum gap below the lock file excerpts.
+ % The column is full, so the minimum gap sets the result slightly into the
+ % bottom margin, which is still well inside the printable area.
+ \vspace{1em}\vfill
  % From drift_study/: the 2025-01-01 environment compared to that of 2026-10-01
  \textbf{No lock file counterfactual}\\Compare 2025-01-01 and 2026-10-01 solves: 67 of 113 packages had new major/minor versions, 24 were dropped, and 39 added. Environments might run, but are not the same.\par
 }{
