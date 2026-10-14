@@ -4,9 +4,9 @@
 \graphicspath{{figures/}}
 \usepackage[hidelinks]{hyperref}
 
-% DOI link, highlighted so that it stands out from the surrounding text
-\definecolor{doiblue}{RGB}{0,102,204}
-\newcommand{\doi}[1]{\href{https://doi.org/#1}{\textcolor{doiblue}{#1}}}
+% Highlight colour for DOI and URL links so that they stand out from the surrounding text
+\definecolor{linkblue}{RGB}{0,102,204}
+\newcommand{\doi}[1]{\href{https://doi.org/#1}{\textcolor{linkblue}{#1}}}
 
 % Uncomment the following commands to customise the format
 
@@ -105,27 +105,27 @@
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
   \item Locking: automatic and Rust-fast
   \item Define host-specific expectations of hardware resources (e.g. CUDA version)
-  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on Mac laptop, run on Linux machine with CUDA)
+  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA)
  \end{itemize}
 
  \subsection{Linux container distributions}
  \vspace{0.5em}
  \begin{minipage}{0.50\textwidth}
   \begin{center}
-   \href{https://www.docker.com/}{\includegraphics[width=0.8\textwidth]{docker-logo-blue.pdf}}
+   \href{https://apptainer.org/}{\includegraphics[width=0.8\textwidth]{apptainer_logo.pdf}}
   \end{center}
  \end{minipage}%
  \hfill
  \begin{minipage}{0.50\textwidth}
   \begin{center}
-   \href{https://apptainer.org/}{\includegraphics[width=0.8\textwidth]{apptainer_logo.pdf}}
+   \href{https://www.docker.com/}{\includegraphics[width=0.8\textwidth]{docker-logo-blue.pdf}}
   \end{center}
  \end{minipage}%
  \vspace{1.0em}
 
  \begin{itemize}
-  \item Deploy software environments to worker nodes through Docker and Apptainer \textbf{container images}
-  \item With Pixi environment, Dockerfile or Apptainer definition files become a \textbf{simple template}
+  \item Deploy software environments to HTC, HPC, and cloud worker nodes through Apptainer and Docker \textbf{Linux container images}
+  \item With Pixi environment, Apptainer definition files or Dockerfiles become a \textbf{simple template}
   \item Changes to environment can trigger rebuilds and redeployments of container images
   % \item Fast launching with CHTC's \texttt{/staging} and OSDF
  \end{itemize}
@@ -163,6 +163,7 @@
  Data scientists and researchers at the \textbf{University of Wisconsin--Madison Data Science Institute} are using these workflow patterns across:
  \begin{itemize}
   \item High Energy Physics applications of simulation-based inference
+  \item Plasma physics end-to-end pipelines for transport-consistent stellarator optimization (\href{https://github.com/driftless-star/driftless-star}{\textcolor{linkblue}{github.com/driftless-star/driftless-star}})
   \item Large-scale simulation of protein motions using molecular dynamics
   \item Reinterfacing high-resolution rapid refresh weather data
  \end{itemize}
