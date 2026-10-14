@@ -27,9 +27,18 @@
 \geometry{margin=0in}
 
 %% Font
+\RequirePackage{iftex}
 \RequirePackage{cmbright}
 \RequirePackage[default]{lato}
+\ifPDFTeX
 \RequirePackage[T1]{fontenc}
+\else
+% Under XeTeX and LuaTeX lato is loaded through fontspec, which makes Lato the
+% roman family, while cmbright makes the sans serif family (Latin Modern Sans)
+% the default. Select the roman family so that the text is set in Lato.
+% The T1 encoding must not be selected as it replaces the fontspec fonts.
+\renewcommand{\familydefault}{\rmdefault}
+\fi
 
 %% Small separation on enumerate and itemize
 \RequirePackage{enumitem}
@@ -56,6 +65,9 @@
 
 %% Ragged right text alignment
 \RequirePackage{ragged2e}
+% The default of 2em of stretch is too little for large text in narrow columns:
+% with hyphenation disabled TeX overfills lines instead of breaking them early
+\setlength{\RaggedRightRightskip}{0pt plus 1fil}
 
 %% AMS packages
 \RequirePackage{amsmath}
@@ -82,6 +94,8 @@
 \newcommand{\fontsizeauthor}{\fontsize{48.00}{68.00} \selectfont}
 \newcommand{\fontsizesection}{\fontsize{48.00}{68.00} \selectfont}
 \newcommand{\fontsizesubsection}{\fontsize{38.00}{45.00} \selectfont}
+\newcommand{\fontsizeinstitution}{\fontsize{24.00}{30.00} \selectfont}
+\newcommand{\fontsizeqrcode}{\fontsize{48.00}{68.00} \selectfont}
 
 \DeclareOption{a2paper}{
 \geometry{a2paper}
@@ -102,8 +116,13 @@
 }
 
 \DeclareOption{a0paper}{
-% \geometry{a0paper}
-\geometry{paperwidth=36in,paperheight=48in}
+\geometry{a0paper}
+}
+
+% Largest landscape poster that fits both a 44in x 44in poster board and a
+% 36in wide plotter roll. Font sizes are set for this size in the poster source.
+\DeclareOption{paper44x36in}{
+\geometry{paperwidth=44in,paperheight=36in,landscape=false}
 }
 
 \DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
@@ -181,15 +200,15 @@
 
 %% QR code
 \newcommand{\qrcode}[3]{
-\begin{minipage}[c]{0.30\textwidth}
+\begin{minipage}[c]{0.28\textwidth}
 \includegraphics[width=\textwidth]{#1}
 \end{minipage}%
 \begin{minipage}[c]{0.12\textwidth}
 \hfill
 \includegraphics[height=0.85\textwidth]{#2}
 \end{minipage}%
-\begin{minipage}[c]{0.50\textwidth}
-#3
+\begin{minipage}[c]{0.60\textwidth}
+\fontsizeqrcode #3
 \end{minipage}%
 }
 
@@ -202,45 +221,40 @@
 \end{minipage}%
 }
 
-%% Section command
-\renewcommand{\section}[1]{
+%% Headings
+% The paragraph of each heading has to end inside of the group that sets the
+% font size, as otherwise multi-line headings are set with the baselineskip of
+% the body text and their lines overlap.
+% \addvspace is ignored at the top of a column, so columns that start with a
+% heading stay top aligned.
 
-\vspace{2em}{\fontsizesection\selectfont
-\textbf{\leavevmode
-#1
-}}\\[0.5em]
+%% Section command
+\renewcommand{\section}[1]{%
+\par\addvspace{1.2em}%
+{\fontsizesection\bfseries #1\par}%
+\nobreak\vspace{0.4em}%
 }
 
 %% Subsection command
-\renewcommand{\subsection}[1]{
-
-\vspace{2em}{\fontsizesection\selectfont
-\textbf{\leavevmode
-#1
-}}\\[0.25em]
+\renewcommand{\subsection}[1]{%
+\par\addvspace{1.0em}%
+{\fontsizesubsection\bfseries #1\par}%
+\nobreak\vspace{0.3em}%
 }
 
 %% Title command
-\renewcommand{\title}[1]{
-{\fontsizetitle\textbf{\leavevmode
-#1
-}}\\
-
+\renewcommand{\title}[1]{%
+{\fontsizetitle\bfseries #1\par}%
+\vspace{0.6em}%
 }
 
 %% Author command
-\renewcommand{\author}[1]{
-{\color{gray}\fontsizeauthor
-#1
-}\\[-1.0em]
-
+\renewcommand{\author}[1]{%
+{\color{gray}\fontsizeauthor #1\par}%
+\vspace{0.3em}%
 }
 
 %% Institution command
-\newcommand{\institution}[1]{
-% \vspace{-1em}
-{\color{gray}\fontsizeinstitution
-#1
-}\\[-1.0em]
-
+\newcommand{\institution}[1]{%
+{\color{gray}\fontsizeinstitution #1\par}%
 }
