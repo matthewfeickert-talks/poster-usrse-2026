@@ -148,7 +148,8 @@
 
  \subsection{Reproducible environments with Pixi}
   \begin{center}
-   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.5\textwidth]{tools_pixi.pdf}}
+   % Kept small to leave room for the lock file excerpts
+   \href{https://pixi.prefix.dev/}{\includegraphics[width=0.35\textwidth]{tools_pixi.pdf}}
   \end{center}
  \begin{itemize}
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
@@ -160,12 +161,47 @@
  \subsection{Manifest and lock file}
  \vspace{0.5em}
  \textbf{\texttt{pixi.toml}} (excerpt)
- % Omits version, the empty [dependencies] table, and the win-64-cuda target,
- % which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
- \lstinputlisting[language=TOML,linerange={1-7,9-12,15-20}]{example/pixi.toml}
+ % Omits version, the empty [tasks] and [dependencies] tables, and the win-64-cuda
+ % target, which mirrors linux-64-cuda. Update the line ranges if example/pixi.toml changes.
+ \lstinputlisting[language=TOML,linerange={1-7,13-18}]{example/pixi.toml}
  \vspace{0.5em}
- \textbf{\texttt{pixi.lock}} (excerpt)
- \lstinputlisting[language=PixiLock,linerange={1-14}]{example/pixi.lock}
+ \textbf{\texttt{pixi.lock}} (excerpt)\par
+ % Side by side, from example/pixi_lock_excerpt.yaml: the linux-64-cuda platform
+ % from the top of the lock file, and the start of the locked pytorch package.
+ % The widths fit the longest line of the platform excerpt.
+ % The listings frame of the second of two side-by-side listings is drawn offset
+ % by xleftmargin, so both listings are set without a frame in a box that has
+ % the listings background and frame separation.
+ % \vspace{0pt} aligns the minipages by their top edges instead of their first
+ % baselines, so that the two boxes start at the same height.
+ % \nointerlineskip and \medskipamount give the same gap below the label as the
+ % listings aboveskip gives below the pixi.toml label.
+ \nointerlineskip\vspace{\medskipamount}
+ \noindent
+ \begin{minipage}[t]{0.37\textwidth}
+  \vspace{0pt}
+  \setlength{\fboxsep}{8pt}%
+  \colorbox{black!4}{\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
+   \lstinputlisting[language=PixiLock,linerange={4-15},frame=none,xleftmargin=0pt,xrightmargin=0pt,aboveskip=0pt,belowskip=0pt]{example/pixi_lock_excerpt.yaml}
+  \end{minipage}}
+ \end{minipage}%
+ \hfill
+ \begin{minipage}[t]{0.61\textwidth}
+  \vspace{0pt}
+  \setlength{\fboxsep}{8pt}%
+  \colorbox{black!4}{\begin{minipage}[t]{\dimexpr\linewidth-2\fboxsep\relax}
+   % The package URL is longer than the column, so it is wrapped. listings
+   % breaks lines at discretionary hyphens, which the poster-wide hyphenation
+   % penalties below \begin{document} disable, so restore the defaults here.
+   \hyphenpenalty=50 \exhyphenpenalty=50
+   \lstinputlisting[language=PixiLock,linerange={16-26},frame=none,xleftmargin=0pt,xrightmargin=0pt,aboveskip=0pt,belowskip=0pt,breaklines=true,breakindent=2em]{example/pixi_lock_excerpt.yaml}
+  \end{minipage}}
+ \end{minipage}\par
+ % Set the result at the bottom of the column, level with the logos at the
+ % bottom of the right column, with a minimum gap below the lock file excerpts
+ \vspace{0.5em}\vfill
+ % From drift_study/: the 2025-01-01 environment compared to that of 2026-10-01
+ \textbf{No lock file counterfactual}\\Compare 2025-01-01 and 2026-10-01 solves: 67 of 113 packages had new major/minor versions, 24 were dropped, and 39 added. Environments might run, but are not the same.\par
 }{
  % RIGHT COLUMN
  \subsection{Linux container distributions}
