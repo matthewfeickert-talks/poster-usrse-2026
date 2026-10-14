@@ -24,3 +24,18 @@ depends-on = ["poster"]
 tectonic = ">=0.17.0,<0.18"
 qrcode = ">=8.2,<9"
 rsync = ">=3.4.4,<4"
+
+[feature.lint.tasks.lint]
+description = "Run prek on all files in the repository"
+cmd = "prek run --all-files"
+
+[feature.lint.tasks.check-links]
+description = "Check links in the poster and Markdown files, might fail if no GITHUB_TOKEN is set"
+cmd = "lychee --no-progress *.md drift_study/*.md poster.tex"
+
+[feature.lint.dependencies]
+lychee = ">=0.24.2,<0.25"
+prek = ">=0.5.5,<0.6"
+
+[environments]
+lint = { features = ["lint"], no-default-feature = true }

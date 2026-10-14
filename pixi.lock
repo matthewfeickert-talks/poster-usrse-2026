@@ -139,6 +139,22 @@ environments:
       - conda: https://conda.anaconda.org/conda-forge/noarch/python_abi-3.15-9_cp315.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/qrcode-8.2-pyhd8ed1ab_0.conda
       - conda: https://conda.anaconda.org/conda-forge/noarch/tzdata-2026c-h151e31d_0.conda
+  lint:
+    channels:
+    - url: https://conda.anaconda.org/conda-forge/
+    packages:
+      linux-64:
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/libgcc-16.2.0-ha9f2e26_7.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/libgomp-16.2.0-he0feb66_7.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/lychee-0.24.2-h39d0f39_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-64/prek-0.5.5-hf19af3b_0.conda
+      linux-aarch64:
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/_openmp_mutex-4.5-20_gnu.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/libgcc-16.2.0-h205dda4_7.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/libgomp-16.2.0-h8acb6b2_7.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/lychee-0.24.2-h4cb7313_1.conda
+      - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/prek-0.5.5-h328a733_0.conda
 packages:
 - conda: https://conda.anaconda.org/conda-forge/linux-64/_openmp_mutex-4.5-20_gnu.conda
   build_number: 20
@@ -555,6 +571,18 @@ packages:
     - libzlib >=1.3.2,<2.0a0
   size: 63713
   timestamp: 1785362952714
+- conda: https://conda.anaconda.org/conda-forge/linux-64/lychee-0.24.2-h39d0f39_1.conda
+  sha256: 59a5afe396a93269ddc4b67262412f0cb707d1294393944d461b2f29164ab5dc
+  md5: 81747139d7e9fba97af275d1c8f7fe0a
+  depends:
+  - libgcc >=15
+  - __glibc >=2.17,<3.0.a0
+  constrains:
+  - __glibc >=2.17
+  license: Apache-2.0 OR MIT
+  run_exports: {}
+  size: 5760830
+  timestamp: 1791278254472
 - conda: https://conda.anaconda.org/conda-forge/linux-64/lz4-c-1.10.0-hee9eb32_2.conda
   sha256: b8c0e930183e6b7f83cd35ace102f2b8c2f0faae41dc05255dc72f247dfc556a
   md5: e38a3253d72ab07d471483f24947e2a2
@@ -638,6 +666,19 @@ packages:
     - popt >=1.19,<2.0a0
   size: 75956
   timestamp: 1787667714286
+- conda: https://conda.anaconda.org/conda-forge/linux-64/prek-0.5.5-hf19af3b_0.conda
+  sha256: b21c51b3eba7d93f44687613ef8cb8aeca5962c7873540415c9f6659ce4c6a78
+  md5: 57f2cee191ca9e2011ad8e92d30a7873
+  depends:
+  - __glibc >=2.17,<3.0.a0
+  - libgcc >=15
+  constrains:
+  - __glibc >=2.17
+  license: MIT
+  license_family: MIT
+  run_exports: {}
+  size: 5026563
+  timestamp: 1791202738312
 - conda: https://conda.anaconda.org/conda-forge/linux-64/pthread-stubs-0.4-h7cc23a3_1004.conda
   sha256: 4a44fd00ea73b79ca2c89b0727b9ccf61c506ead71e67a9abfa4c590042b5a4a
   md5: bb66b610707b811e3c65181a6431e7a8
@@ -1272,6 +1313,17 @@ packages:
     - libzlib >=1.3.2,<2.0a0
   size: 70108
   timestamp: 1785276540870
+- conda: https://conda.anaconda.org/conda-forge/linux-aarch64/lychee-0.24.2-h4cb7313_1.conda
+  sha256: 3cf22df071c6f5e7e7353c7bacf4293913346d7cd56ef8acd3266bc3bbc739a0
+  md5: 62501bd137a9090dc18b893003c553b9
+  depends:
+  - libgcc >=15
+  constrains:
+  - __glibc >=2.17
+  license: Apache-2.0 OR MIT
+  run_exports: {}
+  size: 5665866
+  timestamp: 1791278246500
 - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/lz4-c-1.10.0-hfb11796_2.conda
   sha256: e8392843a18954fef038f2721fde65c4dbe7693fcd07677e5e74fca85b1a690c
   md5: 36a6fab65bc51cf71761eb5339d8ea04
@@ -1349,6 +1401,18 @@ packages:
     - popt >=1.19,<2.0a0
   size: 78672
   timestamp: 1787667712049
+- conda: https://conda.anaconda.org/conda-forge/linux-aarch64/prek-0.5.5-h328a733_0.conda
+  sha256: d9cc48e5efe1815ecdd91a3d824a8d737456798a156150adaf7890d09ebbeaf5
+  md5: 15730e3f3958c73f64a0cad31eac59b7
+  depends:
+  - libgcc >=15
+  constrains:
+  - __glibc >=2.17
+  license: MIT
+  license_family: MIT
+  run_exports: {}
+  size: 4912624
+  timestamp: 1791202731751
 - conda: https://conda.anaconda.org/conda-forge/linux-aarch64/pthread-stubs-0.4-h5bc82ec_1004.conda
   sha256: c66ea2c8f64b815b24344340a8a9d62152359dbf48a6151b1f282fdf35204d83
   md5: ac6610f5c63c18f5a3df229aa5f7ba37
