@@ -8,7 +8,7 @@ SCORE: 3 (strong accept)
 
 ### Review text
 
-Strongly aligned with the theme.It explicitly targets reproducible CUDA/AI-ML environments across heterogeneous hardware, and core RSE-mission work (reproducibility, deployment tooling). Concrete tool (Pixi) with real technical detail (multi-platform digest-level lock files, compiler-level dependency solving) and practical deployment guidance across batch and cloud-native systems. Abstract reads more as a practical tool overview/tutorial than an original case study, no quantitative results like adoption and time saved.
+Strongly aligned with the theme. It explicitly targets reproducible CUDA/AI-ML environments across heterogeneous hardware, and core RSE-mission work (reproducibility, deployment tooling). Concrete tool (Pixi) with real technical detail (multi-platform digest-level lock files, compiler-level dependency solving) and practical deployment guidance across batch and cloud-native systems. Abstract reads more as a practical tool overview/tutorial than an original case study, no quantitative results like adoption and time saved.
 
 Suggestion - Add even one measured before/after (e.g., setup time or reproducibility failure rate) to move from "here's a useful tool" to demonstrated impact.
 
