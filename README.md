@@ -21,7 +21,8 @@ If you're arriving at this GitHub repository from the poster's QR code here's ad
 
 ## Disclosure
 
-Following the [IEEE Guidelines for Artificial Intelligence (AI)-Generated Content](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/#ai-generated-content), I used ClaudeCode:claude-opus-5-5 to revise the poster LaTeX template to meet the conference size regulations, create `listings` functions to render code environments, to address LaTeX formatting issues related to bold text, and to check for spelling and grammatical errors.
+Following the [IEEE Guidelines for Artificial Intelligence (AI)-Generated Content](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/#ai-generated-content), I used ClaudeCode:claude-opus-5-5 to revise the poster LaTeX template to meet the conference size regulations, to create `listings` functions to render code environments, to address LaTeX formatting and layout issues, and to check for spelling and grammatical errors.
+I also used it to write the code of the [environment drift study](drift_study/) whose results are shown on the poster.
 
 ## Acknowledgements
 
