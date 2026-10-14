@@ -2,8 +2,13 @@
 
 Solves the same manifest as if it were each of a series of dates, using the
 Pixi workspace option exclude-newer, and compares each environment to the
-first. The first environment is the one that a lock file written on the start
-date would have kept for every later date.
+first. The first environment stands in for the one that a lock file written on
+the start date would have kept for every later date.
+
+It is an approximation of that lock file: the solves use today's repodata, and
+conda-forge patches the dependency metadata of published packages and moves
+broken builds off its main label after the fact. So a solve today with
+exclude-newer set to a past date can differ from a solve made on that date.
 
 Each package is compared by version and build. conda-forge rebuilds hundreds
 of packages every day without changing their versions, so rebuilds are counted
@@ -14,6 +19,7 @@ downloaded, only the repodata.
 """
 
 import argparse
+import calendar
 import csv
 import datetime
 import os
@@ -24,6 +30,7 @@ import tomllib
 from pathlib import Path
 
 MANIFEST = Path(__file__).parent / "pixi.toml"
+OUTPUT = Path(__file__).parent / "drift_study.csv"
 # Packages whose versions are shown in the summary table
 KEY_PACKAGES = ["python", "pytorch", "torchvision", "numba-cuda", "cuda-version"]
 # Packages that only distribute data, whose calendar versions change with every
@@ -41,11 +48,20 @@ CATEGORIES = [
 
 
 def snapshot_dates(start, end, months):
-    date = start
-    while date <= end:
-        yield date
-        month = date.month - 1 + months
-        date = date.replace(year=date.year + month // 12, month=month % 12 + 1)
+    """Yield the dates from start to end that are a multiple of months apart.
+
+    The day of the month is kept where the month has it, and is otherwise the
+    last day of the month (e.g. a start of 2025-01-31 gives 2025-02-28).
+    """
+    for step in range((end.year - start.year) * 12 + end.month - start.month + 1):
+        if step % months:
+            continue
+        year, month = divmod(start.month - 1 + step, 12)
+        year += start.year
+        day = min(start.day, calendar.monthrange(year, month + 1)[1])
+        date = datetime.date(year, month + 1, day)
+        if date <= end:
+            yield date
 
 
 def parse_lock(lock_text):
@@ -69,18 +85,32 @@ def solve(date, workdir):
     manifest_text = MANIFEST.read_text()
     if "exclude-newer" in tomllib.loads(manifest_text)["workspace"]:
         raise ValueError(f"{MANIFEST} must not set exclude-newer")
-    manifest_text = manifest_text.replace(
-        "[workspace]\n", f'[workspace]\nexclude-newer = "{date.isoformat()}"\n', 1
+    # Add exclude-newer as the first key of the [workspace] table
+    manifest_text = re.sub(
+        r"^\[workspace\].*$",
+        lambda match: f'{match.group(0)}\nexclude-newer = "{date.isoformat()}"',
+        manifest_text,
+        count=1,
+        flags=re.MULTILINE,
     )
+    # Without exclude-newer every snapshot would be solved against today's
+    # packages and show no drift, so check that it was added
+    workspace = tomllib.loads(manifest_text)["workspace"]
+    if workspace.get("exclude-newer") != date.isoformat():
+        raise ValueError(f"Could not add exclude-newer to {MANIFEST}")
     manifest = workdir / "pixi.toml"
     manifest.write_text(manifest_text)
     # pixi run sets PIXI_EXE to the pixi that is running the task
     pixi = os.environ.get("PIXI_EXE", "pixi")
-    subprocess.run(
+    result = subprocess.run(
         [pixi, "lock", "--no-install", "--manifest-path", str(manifest)],
-        check=True,
+        # The return code is checked below to report pixi's error message
+        check=False,
         capture_output=True,
+        text=True,
     )
+    if result.returncode != 0:
+        raise RuntimeError(f"Solve for {date} failed:\n{result.stderr}")
     return parse_lock((workdir / "pixi.lock").read_text())
 
 
@@ -127,22 +157,30 @@ def main():
     parser.add_argument(
         "--months", type=int, default=1, help="months between snapshots"
     )
-    parser.add_argument("--output", type=Path, default=Path("drift_study.csv"))
+    parser.add_argument("--output", type=Path, default=OUTPUT)
     args = parser.parse_args()
+    if args.months < 1:
+        parser.error("--months must be at least 1")
+    if args.start > args.end:
+        parser.error("--start must not be after --end")
 
+    # Write each snapshot as soon as it is solved, so that the results of the
+    # completed solves are kept if a later one fails
     snapshots = {}
-    with tempfile.TemporaryDirectory() as tmpdir:
+    with (
+        tempfile.TemporaryDirectory() as tmpdir,
+        args.output.open("w", newline="") as csv_file,
+    ):
+        # The csv module defaults to CRLF line endings, use LF like the repository
+        writer = csv.writer(csv_file, lineterminator="\n")
+        writer.writerow(["date", "name", "version", "build"])
         for date in snapshot_dates(args.start, args.end, args.months):
             workdir = Path(tmpdir) / date.isoformat()
             workdir.mkdir()
             snapshots[date] = solve(date, workdir)
-
-    with args.output.open("w", newline="") as csv_file:
-        writer = csv.writer(csv_file)
-        writer.writerow(["date", "name", "version", "build"])
-        for date, packages in snapshots.items():
-            for name, (version, build) in sorted(packages.items()):
+            for name, (version, build) in sorted(snapshots[date].items()):
                 writer.writerow([date.isoformat(), name, version, build])
+            csv_file.flush()
 
     baseline = snapshots[args.start]
     print(f"Packages compared to the {len(baseline)} packages on {args.start}")
