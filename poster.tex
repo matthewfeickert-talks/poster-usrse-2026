@@ -1,4 +1,4 @@
-% CHTC Researcher Forum 2026: Posters are 4 feet (48 inches) wide and 3 feet (36 inches) tall.
+% USRSE 2026: Posters can be up to 44 inches wide by 44 inches tall
 % Hack: Currently set in betterposter.cls
 \documentclass[a0paper,fleqn]{betterposter}
 \usepackage{bm}
@@ -85,7 +85,7 @@
 
 }{
  % LEFT COLUMN
- \title{Accelerating hardware-accelerated science}
+ \title{Reproducible\\Software\\Environments for\\Hardware-Accelerated Science}
  \vspace{0.5em}
  \author{{\href{https://www.matthewfeickert.com/}{Matthew Feickert}$^{1}$}}
  \vspace{1.0em}
@@ -130,7 +130,7 @@
   \item Deploy software environments to worker nodes through Docker and Apptainer \textbf{container images}
   \item With Pixi environment, Dockerfile or Apptainer definition files become a \textbf{simple template}
   \item Changes to environment can trigger rebuilds and redeployments of container images
-  \item Fast launching with CHTC's \texttt{/staging} and OSDF
+  % \item Fast launching with CHTC's \texttt{/staging} and OSDF
  \end{itemize}
 }{
  % RIGHT COLUMN
@@ -153,7 +153,7 @@
  \begin{itemize}
   \item CHTC's HTCondor deployment support \textbf{container universe}
   \item Specific control over \textbf{GPU and CUDA capabilities} through submit description files
-  \item Parallel tasks can scaleout across CHTC GPU nodes
+  \item Parallel tasks can scaleout across GPU nodes
  \end{itemize}
 
  \subsection{Implementation}
