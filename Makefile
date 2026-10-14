@@ -15,8 +15,15 @@ default: poster
 figures: $(figure_list)
 
 # Target assumes figure source is in same directory as expected figure path
+# Inkscape 1.x command line options, cf. https://inkscape.org/doc/inkscape-man.html
 figures/%.pdf: figures/%.svg
-	inkscape -z -D --file=$(basename $@).svg --export-pdf=$(basename $@).pdf
+	inkscape --export-area-drawing --export-type=pdf --export-filename=$@ $<
+
+# Emoji keep their full page instead of being cropped to the drawing, as the
+# \emoji command in poster.tex sizes them by the padded Noto Emoji page.
+# GNU Make uses this rule over the one above as it has the shorter stem.
+figures/emoji_u%.pdf: figures/emoji_u%.svg
+	inkscape --export-type=pdf --export-filename=$@ $<
 
 poster: figures
 	latexmk -$(LATEX) -logfilewarnings -halt-on-error $(FILENAME)
