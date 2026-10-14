@@ -19,6 +19,10 @@ If you're arriving at this GitHub repository from the poster's QR code here's ad
 * Add PDF of poster to the Zenodo by Wednesday, October 21st, 2026.
 * Posters may be printed up to 44 x 44 inches.
 
+## Disclosure
+
+Following the [IEEE Guidelines for Artificial Intelligence (AI)-Generated Content](https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/#ai-generated-content), I used ClaudeCode:claude-opus-5-5 to revise the poster LaTeX template to meet the conference size regulations, create `listings` functions to render code environments, to address LaTeX formatting issues related to bold text, and to check for spelling and grammatical errors.
+
 ## Acknowledgements
 
 - Built using a modified version of [Rafael Bailo](https://github.com/rafaelbailo)'s [Better Poster Latex Template](https://github.com/rafaelbailo/betterposter-latex-template)
