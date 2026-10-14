@@ -8,6 +8,10 @@ version = "0.1.0"
 description = "Generate QR code for poster"
 cmd = "python ./qr_code.py"
 
+[tasks.drift-study]
+description = "Measure how the unlocked example environment drifts over time"
+cmd = "python ./drift_study/drift_study.py"
+
 [tasks.poster]
 cmd = """
 tectonic poster.tex

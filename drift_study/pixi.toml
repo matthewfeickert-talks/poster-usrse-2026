@@ -1,0 +1,22 @@
+# Manifest for the environment drift study, c.f. drift_study.py.
+# The dependencies of example/pixi.toml for a single CUDA 12 platform. The lower
+# bounds are those that `pixi add` wrote with exclude-newer = "2025-01-01".
+# CUDA 12 is used as CUDA 13 was not yet on conda-forge on that date.
+# The torchvision upper bound is widened from the `pixi add` suggestion of <0.21,
+# as up to 0.28 the only public API that was removed is video decoding and
+# encoding (in 0.26), cf. https://github.com/pytorch/vision/releases
+# The numba-cuda upper bound is widened from the `pixi add` suggestion of <0.3,
+# as up to 0.30 the public numba.cuda API is kept. The user-facing changes are
+# that the default compute capability is 7.5 (0.14), and that numba.cuda.fp16
+# has to be imported explicitly (0.18), cf. https://github.com/NVIDIA/numba-cuda
+# drift_study.py adds exclude-newer to copies of this file, so it must not set it.
+[workspace]
+channels = ["conda-forge"]
+name = "drift_study"
+platforms = [{ name = "linux-64-cuda", platform = "linux-64", cuda = "12" }]
+
+[dependencies]
+numba-cuda = ">=0.2.0,<0.31"
+pytorch-gpu = ">=2.5.1,<3"
+torchvision = ">=0.20.1,<0.29.0"
+cuda-version = "12.*"
