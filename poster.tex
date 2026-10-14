@@ -114,7 +114,8 @@
 \begin{center}
   % QR code
   \qrcode{qr_code.pdf}{smartphoneWhite}{
-   \textbf{Take a picture} to get more information, examples, and this poster\\[0.25em]
+  \renewcommand{\bfdefault}{ub}%
+   \textbf{Scan QR code} to get more information, examples, and this poster\\[0.25em]
    % The URL only fits on one line at the text font size
    {\fontsizestandard\href{https://github.com/matthewfeickert-talks/poster-usrse-2026}{github.com/matthewfeickert-talks/poster-usrse-2026}}
   }
@@ -140,7 +141,7 @@
   \item Declaratively create \textbf{fully reproducible locked environments} with \textbf{conda} packages (ANY language) and \textbf{Python} packages
   \item Locking: digest-level, automatic, Rust-fast
   \item Define host-specific expectations of hardware resources (e.g. CUDA version)
-  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA)
+  \item Resolve environments for \textbf{multiple different platforms} than solve machine (e.g. solve on ARM-based Mac laptop, run on x86\_64 Linux machine with CUDA stack from conda-forge)
  \end{itemize}
 
  \subsection{Manifest and lock file}
@@ -173,6 +174,7 @@
   \item Deploy software environments to HTC, HPC, and cloud (e.g. HTCondor, Slurm, and Kubernetes) worker nodes through Apptainer and Docker \textbf{Linux container images}
   \item With Pixi environment, Apptainer definition files or Dockerfiles become a \textbf{simple template}
   \item \textbf{Leverage CI/CD pipelines}: Changes to environment can trigger rebuilds and redeployments of container images (PR merge to using new containerized environment in production in less than 10 minutes)
+  \item \textbf{Know your compute}: Still need to be thinking if target compute resources drivers and CUDA compute capabilities support software environments
  \end{itemize}
 
  \subsection{Applications in DSI driven science}
@@ -184,9 +186,10 @@
   \item Reinterfacing high-resolution rapid refresh weather data
  \end{itemize}
 
- \subsection{More information}
+ \subsection{Resources and more information}
  \begin{itemize}
   \item Matthew Feickert, Ruben Arts, John Kirkham, \emph{Reproducible Machine Learning Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.25080/nwuf8465}}
+  \item Matthew Feickert, \emph{Reproducible Machine Learning Workflows for Scientists}, \\\textbf{DOI: \doi{10.5281/zenodo.17537698}}
   \item Matthew Feickert, Ruben Arts, Katrina Riehl, \emph{Reproducible CUDA Accelerated Workflows for Scientists with Pixi}, \\\textbf{DOI: \doi{10.5281/zenodo.21829174}}
   \item \href{https://github.com/CHTC/templates-GPUs}{\textbf{\textcolor{linkblue}{github.com/CHTC/templates-GPUs}}}
  \end{itemize}
